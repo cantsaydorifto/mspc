@@ -26,9 +26,8 @@ export default function Home() {
           className="bg-[url('/a.jpg')] bg-cover bg-center relative flex items-center md:items-end xl:h-full aspect-square md:h-[600px] xl:flex-[3] rounded-lg rounded-lg cursor-pointer"
         >
           <div
-            className={`z-[1] absolute transition-opacity duration-1000 inset-0 bg-black opacity-${
-              heroHover ? 20 : 50
-            } rounded-lg`}
+            style={{ opacity: heroHover ? 0.2 : 0.5 }}
+            className={`z-[1] absolute transition-opacity duration-1000 inset-0 bg-black rounded-lg`}
           />
           <div
             onClick={(e) => e.stopPropagation()}
@@ -63,9 +62,8 @@ export default function Home() {
             className="relative flex justify-center items-center md:h-[300px] aspect-square md:aspect-auto md:flex-[1] bg-[url('/a.webp')] bg-cover bg-center rounded-lg"
           >
             <div
-              className={`absolute transition-opacity duration-1000 inset-0 bg-black opacity-${
-                gridNumber === 0 ? 20 : 50
-              } rounded-lg`}
+              style={{ opacity: gridNumber === 0 ? 0.2 : 0.5 }}
+              className={`absolute transition-opacity duration-1000 inset-0 bg-black rounded-lg`}
             ></div>
             <div className="z-[1] font-american-type-medium text-white text-xl text-center">
               Seize every opportunity. Always
@@ -77,9 +75,8 @@ export default function Home() {
             className="relative flex justify-center items-center md:h-[300px] aspect-square md:aspect-auto md:flex-[1] bg-[url('/michael.jpg')] bg-cover bg-center rounded-lg"
           >
             <div
-              className={`absolute inset-0 transition-opacity duration-1000 bg-black opacity-${
-                gridNumber === 1 ? 20 : 50
-              } rounded-lg`}
+              style={{ opacity: gridNumber === 1 ? 0.2 : 0.5 }}
+              className={`absolute inset-0 transition-opacity duration-1000 bg-black rounded-lg`}
             ></div>
             <div className="z-[1] font-american-type-medium text-white text-xl text-center">
               lorem ipsum dolor sit amet
@@ -91,9 +88,8 @@ export default function Home() {
             className="relative flex justify-center items-center md:h-[300px] aspect-square md:aspect-auto md:flex-[1] rounded-lg"
           >
             <div
-              className={`z-[1] absolute transition-opacity duration-1000 inset-0 bg-black opacity-${
-                gridNumber === 2 ? 20 : 50
-              } rounded-lg`}
+              style={{ opacity: gridNumber === 2 ? 0.2 : 0.5 }}
+              className={`z-[1] absolute transition-opacity duration-1000 inset-0 bg-black rounded-lg`}
             ></div>
             <div className="z-[1] font-american-type-medium text-white text-xl text-center">
               We love our employees

@@ -4,7 +4,7 @@ import { useEffect } from "react";
 export default function StickyCursor() {
   const mouse = { x: useMotionValue(0), y: useMotionValue(0) };
   const CURSOR_SIZE = 80;
-  const mouseMoveHandler = (e) => {
+  const mouseMoveHandler = (e: MouseEvent) => {
     mouse.x.set(e.clientX - CURSOR_SIZE / 2);
     mouse.y.set(e.clientY - CURSOR_SIZE / 2);
   };

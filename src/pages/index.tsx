@@ -1,114 +1,135 @@
-import Image from "next/image";
-import { Geist, Geist_Mono } from "next/font/google";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+import StickyCursor from "@/components/StickyCursor";
+import { americanTypeMedium } from "@/utils/font";
+import { useRef, useState } from "react";
 
 export default function Home() {
+  const [gridNumber, setGridNumber] = useState(-1);
+  const [heroHover, setHeroHover] = useState(false);
+  const [heroMuted, setHeroMuted] = useState(true);
+  const videoRef = useRef<HTMLVideoElement>(null);
   return (
-    <div
-      className={`${geistSans.variable} ${geistMono.variable} grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]`}
-    >
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/pages/index.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+    <main className={`${americanTypeMedium.variable}`}>
+      <StickyCursor />
+      <div className="flex flex-col xl:flex-row xl:h-screen min-h-screen py-3 px-2 xl:px-6 gap-3">
+        <div
+          onMouseEnter={() => setHeroHover(true)}
+          onMouseLeave={() => setHeroHover(false)}
+          onClick={() => {
+            if (videoRef.current) {
+              if (videoRef.current.paused) {
+                videoRef.current.play();
+              } else {
+                videoRef.current.pause();
+              }
+            }
+          }}
+          className="bg-[url('/a.jpg')] bg-cover bg-center relative flex items-center md:items-end xl:h-full aspect-square md:h-[600px] xl:flex-[3] rounded-lg rounded-lg cursor-pointer"
+        >
+          <div
+            className={`z-[1] absolute transition-opacity duration-1000 inset-0 bg-black opacity-${
+              heroHover ? 20 : 50
+            } rounded-lg`}
+          />
+          <div
+            onClick={(e) => e.stopPropagation()}
+            className="p-6 cursor-text text-3xl text-center md:text-left z-[1] font-american-type-medium text-white sm:text-5xl xl:text-[80px]"
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+            Michael Scott Paper Company
+          </div>
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              setHeroMuted((prev) => !prev);
+            }}
+            className="z-[1] absolute top-4 right-4 text-white"
           >
-            Read our docs
-          </a>
+            <SoundIcon mute={heroMuted} />
+          </button>
+          <video
+            className="absolute top-0 left-0 w-full h-full object-cover rounded-lg"
+            autoPlay
+            muted={heroMuted}
+            ref={videoRef}
+            loop
+          >
+            <source src="/intro.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+        <div className="flex flex-col md:flex-row xl:flex-col rounded-lg flex-[1] gap-4">
+          <div
+            onMouseLeave={() => setGridNumber(-1)}
+            onMouseEnter={() => setGridNumber(0)}
+            className="relative flex justify-center items-center md:h-[300px] aspect-square md:aspect-auto md:flex-[1] bg-[url('/a.webp')] bg-cover bg-center rounded-lg"
+          >
+            <div
+              className={`absolute transition-opacity duration-1000 inset-0 bg-black opacity-${
+                gridNumber === 0 ? 20 : 50
+              } rounded-lg`}
+            ></div>
+            <div className="z-[1] font-american-type-medium text-white text-xl text-center">
+              Seize every opportunity. Always
+            </div>
+          </div>
+          <div
+            onMouseLeave={() => setGridNumber(-1)}
+            onMouseEnter={() => setGridNumber(1)}
+            className="relative flex justify-center items-center md:h-[300px] aspect-square md:aspect-auto md:flex-[1] bg-[url('/michael.jpg')] bg-cover bg-center rounded-lg"
+          >
+            <div
+              className={`absolute inset-0 transition-opacity duration-1000 bg-black opacity-${
+                gridNumber === 1 ? 20 : 50
+              } rounded-lg`}
+            ></div>
+            <div className="z-[1] font-american-type-medium text-white text-xl text-center">
+              lorem ipsum dolor sit amet
+            </div>
+          </div>
+          <div
+            onMouseLeave={() => setGridNumber(-1)}
+            onMouseEnter={() => setGridNumber(2)}
+            className="relative flex justify-center items-center md:h-[300px] aspect-square md:aspect-auto md:flex-[1] rounded-lg"
+          >
+            <div
+              className={`z-[1] absolute transition-opacity duration-1000 inset-0 bg-black opacity-${
+                gridNumber === 2 ? 20 : 50
+              } rounded-lg`}
+            ></div>
+            <div className="z-[1] font-american-type-medium text-white text-xl text-center">
+              We love our employees
+            </div>
+            <video
+              className="absolute top-0 left-0 w-full h-full object-cover rounded-lg"
+              autoPlay
+              muted
+              loop
+            >
+              <source src="/michael-warehouse.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+        </div>
+      </div>
+    </main>
+  );
+}
+
+function SoundIcon({ mute }: { mute?: boolean }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      width="30"
+      height="30"
+    >
+      <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+      <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+      <path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
+      {mute && <line x1="0" y1="0" x2="22" y2="22"></line>}
+    </svg>
   );
 }

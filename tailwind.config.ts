@@ -13,6 +13,9 @@ export default {
         foreground: "var(--foreground)",
       },
     },
+    fontFamily: {
+      "american-type-medium": ["var(--font-american-type-medium)"],
+    },
   },
   plugins: [],
 } satisfies Config;

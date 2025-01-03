@@ -2,14 +2,10 @@ import { useRef, useState } from "react";
 import { SoundIcon } from "./SoundIcon";
 
 export default function HeroCard({ heroTxt }: { heroTxt?: string }) {
-  const [heroHover, setHeroHover] = useState(false);
   const [heroMuted, setHeroMuted] = useState(true);
   const videoRef = useRef<HTMLVideoElement>(null);
-
   return (
     <div
-      onMouseEnter={() => setHeroHover(true)}
-      onMouseLeave={() => setHeroHover(false)}
       onClick={() => {
         if (videoRef.current) {
           if (videoRef.current.paused) {
@@ -19,11 +15,10 @@ export default function HeroCard({ heroTxt }: { heroTxt?: string }) {
           }
         }
       }}
-      className="bg-[url('/a.jpg')] bg-cover bg-center relative flex items-center md:items-end xl:h-full aspect-square md:h-[600px] xl:flex-[3] rounded-lg rounded-lg cursor-pointer"
+      className="group bg-[url('/a.jpg')] bg-cover bg-center relative flex items-center md:items-end xl:h-full aspect-square md:h-[600px] xl:flex-[3] rounded-lg rounded-lg cursor-pointer"
     >
       <div
-        style={{ opacity: heroHover ? 0.2 : 0.5 }}
-        className={`z-[1] absolute transition-opacity duration-1000 inset-0 bg-black rounded-lg`}
+        className={`z-[1] absolute transition-opacity opacity-50 group-hover:opacity-20 duration-1000 inset-0 bg-black rounded-lg`}
       />
       <div
         onClick={(e) => e.stopPropagation()}

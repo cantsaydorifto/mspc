@@ -3,16 +3,20 @@ export default function Card({
   photoSrc,
   videoSrc,
   cardText,
+  className,
 }: {
   video?: boolean;
   videoSrc?: string;
   photoSrc?: string;
   cardText?: string;
+  className?: string;
 }) {
   return (
     <div
       style={{ backgroundImage: `url(${photoSrc ?? ""})` }}
-      className={`relative group flex justify-center items-center md:h-[300px] aspect-square md:aspect-auto md:flex-[1] rounded-lg ${
+      className={`${
+        className ?? ""
+      } relative group flex justify-center items-center md:h-[300px] aspect-square md:aspect-auto md:flex-[1] rounded-lg ${
         video ? "" : `bg-[url('${photoSrc ?? ""}')] bg-cover bg-center`
       }`}
     >

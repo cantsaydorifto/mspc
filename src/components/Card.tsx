@@ -16,6 +16,7 @@ export default function Card({
     <div
       onMouseLeave={() => setIsHovering(false)}
       onMouseEnter={() => setIsHovering(true)}
+      style={{ backgroundImage: `url(${photoSrc ?? ""})` }}
       className={`relative flex justify-center items-center md:h-[300px] aspect-square md:aspect-auto md:flex-[1] rounded-lg ${
         video ? "" : `bg-[url('${photoSrc ?? ""}')] bg-cover bg-center`
       }`}

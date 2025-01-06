@@ -29,18 +29,26 @@ export default function TeamCard({
     offset: ["center end", "start start"],
   });
   const scale = useTransform(scrollYProgress, [0, 1], [1.3, 1]);
-  const rotateLeft = useTransform(scrollYCenterProgress, [0, 1], [0, -5]);
-  const rotateRight = useTransform(scrollYCenterProgress, [0, 1], [0, 5]);
+  const rotateLeft = useTransform(
+    scrollYCenterProgress,
+    [0, 1],
+    [0, -5 - idx * 2]
+  );
+  const rotateRight = useTransform(
+    scrollYCenterProgress,
+    [0, 1],
+    [0, 5 + idx * 2]
+  );
   return (
     <motion.div
-      style={{ paddingTop: `calc(10% + ${idx * 25}px)` }}
-      className="sticky top-0 pt-[10%] h-screen"
+      style={{ paddingTop: `calc(5% + ${idx * 25}px)` }}
+      className="sticky top-0 pt-[10%] h-screen w-full max-w-[1400px]"
     >
       <motion.div
         style={{ rotate: reverse ? rotateRight : rotateLeft }}
         ref={containerRef}
         className={
-          "mb-12 relative overflow-hidden px-12 py-12 rounded-lg w-full max-w-[1400px] flex gap-6" +
+          "mb-12 relative overflow-hidden px-12 py-12 rounded-lg w-full flex gap-6" +
           (reverse ? " flex-row-reverse " : " ") +
           bg
         }

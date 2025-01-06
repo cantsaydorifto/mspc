@@ -53,11 +53,6 @@ export default function TeamCard({
           bg
         }
       >
-        <Airplane
-          className="pointer-none absolute bottom-[-200px] right-[-100px]  opacity-70"
-          size={900}
-          color="#d3d3d3"
-        />
         <div className="overflow-hidden border-4 border-white z-[1] drop-shadow-2xl rounded-lg flex-[1] bg-red-300 h-[500px] items-center flex">
           <motion.img
             style={{ scale }}
@@ -66,23 +61,28 @@ export default function TeamCard({
             className="w-full h-full object-cover"
           />
         </div>
-        <div className="z-[1] flex-[1] text-white flex flex-col gap-8 justify-center">
+        <div className="relative flex-[1] text-white flex flex-col gap-8 justify-center">
+          <Airplane
+            className="pointer-none absolute bottom-[-200px] right-[-150px] opacity-70"
+            size={900}
+            color="#d3d3d3"
+          />
           <div
             style={{
               textShadow: "0px 3px 10px rgba(0, 0, 0)",
             }}
-            className="text-6xl"
+            className="z-10 text-6xl"
           >
             {name}
           </div>
-          <div className="bg-indigo-500 w-fit text-3xl rounded-lg p-3">
+          <div className="z-10 bg-indigo-500 w-fit text-3xl rounded-lg p-3">
             {role}
           </div>
           <ul
             style={{
               textShadow: "0px 2px 10px rgba(0, 0, 0)",
             }}
-            className="text-3xl space-y-8"
+            className="z-10 text-3xl space-y-8"
           >
             {attributes.map((attr) => (
               <li key={name} className="flex items-center gap-3">

@@ -37,7 +37,7 @@ export default function TeamCardSection() {
     },
   ];
   return (
-    <div className="relative font-american-type-medium mt-[100vh] px-2 py-12 flex flex-col items-center">
+    <div className="relative font-american-type-medium px-2 py-12 flex flex-col items-center">
       {memberInfo.map((member, idx) => (
         <TeamCard
           bg={member.bg}

@@ -6,7 +6,7 @@ export default function TeamSection() {
   const textRef = useRef(null);
   const { scrollYProgress: scrollYProgressContainer } = useScroll({
     target: containerRef,
-    offset: ["start end", "end end"],
+    offset: ["start end", "end start"],
   });
   const { scrollYProgress: scrollYProgressText } = useScroll({
     target: textRef,

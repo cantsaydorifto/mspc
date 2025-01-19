@@ -21,16 +21,16 @@ export default function Carousel() {
   return (
     <div
       ref={containerRef}
-      className="max-w-[3000px] mx-auto relative flex items-center flex-col overflow-hidden md:my-16 py-72 px-6 w-full"
+      className="h-screen w-full relative flex justify-center items-center flex-col overflow-hidden md:my-16"
     >
       <div
         onClick={(e) => e.stopPropagation()}
-        className="p-6 cursor-text text-3xl text-center md:text-left font-american-type-medium text-white sm:text-5xl xl:text-[80px]"
+        className="cursor-text text-3xl text-center md:text-left font-american-type-medium text-white sm:text-5xl xl:text-[80px]"
       >
         We Love Paper!
       </div>
       <motion.div
-        className="flex absolute top-16 z-[-1] left-0 overflow-hidden gap-12 md:gap-32 w-fit justify-start"
+        className="flex absolute top-16 lg:top-6 z-[-1] left-0 overflow-hidden gap-12 md:gap-64 w-fit justify-start"
         style={{
           x: xTransformNegative,
         }}
@@ -40,13 +40,13 @@ export default function Carousel() {
             <img
               src="/paper.png"
               key={index}
-              className={`h-[150px] rounded-lg object-cover`}
+              className={`h-[20vh] rounded-lg object-cover`}
             />
           </>
         ))}
       </motion.div>
       <motion.div
-        className="flex z-[-1] absolute bottom-16 left-0 overflow-hidden gap-12 md:gap-32 w-fit justify-start"
+        className="flex z-[-1] absolute bottom-16 lg:bottom-6 left-0 overflow-hidden gap-12 md:gap-64 w-fit justify-start"
         style={{
           x: xTransformPlus,
         }}
@@ -56,7 +56,7 @@ export default function Carousel() {
             <img
               src="/paper.png"
               key={index}
-              className={` h-[150px] rounded-lg object-cover`}
+              className={`h-[20vh] rounded-lg object-cover`}
             />
           </>
         ))}

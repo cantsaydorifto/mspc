@@ -13,33 +13,20 @@ export default function TeamSection() {
     offset: ["start end", "end center"],
   });
   const opacityText = useTransform(scrollYProgressText, [0, 1], [0, 1]);
-  const opacity = useTransform(scrollYProgressContainer, [0, 1], [0, 1]);
-  const left = useTransform(scrollYProgressContainer, [0, 1], [0, 150]);
-  const right = useTransform(scrollYProgressContainer, [0, 1], [0, -150]);
+  const bgScale = useTransform(scrollYProgressContainer, [0, 1], [1.6, 1]);
 
   return (
     <div
       ref={containerRef}
-      className="max-w-[3000px] mx-auto relative h-screen flex items-center justify-center overflow-hidden"
+      className="overflow-hidden mx-auto relative h-screen flex items-center justify-center overflow-hidden"
     >
       <motion.img
-        src="/michael.png"
-        alt="Michael Scott"
-        className="h-[300px] absolute top-32 left-[-80px] z-[1] object-cover rounded-lg"
-        style={{ x: left, opacity }}
+        src="a.png"
+        alt=""
+        style={{ scale: bgScale }}
+        className="absolute w-full h-full object-cover z-0"
       />
-      <motion.img
-        src="/ryan.png"
-        alt="Michael Scott"
-        style={{ opacity }}
-        className="h-[300px] absolute bottom-12 right-12 z-[1] object-cover rounded-lg"
-      />
-      <motion.img
-        src="/pam.png"
-        alt="Michael Scott"
-        className="h-[300px] absolute top-0 right-[-80px] z-[1] object-cover rounded-lg"
-        style={{ x: right, opacity }}
-      />
+      <div className="absolute top-0 left-0 w-full h-full bg-black z-0 opacity-30" />
       <motion.div
         style={{ opacity: opacityText }}
         ref={textRef}

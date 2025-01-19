@@ -22,7 +22,7 @@ export default function TeamCardSection() {
         "Always has a plan",
         "Loves his employees",
       ],
-      bg: "bg-violet-600",
+      bg: "bg-indigo-500",
     },
     {
       name: "Ryan Howard",

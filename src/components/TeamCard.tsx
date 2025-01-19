@@ -34,12 +34,12 @@ export default function TeamCard({
       <motion.div
         ref={containerRef}
         className={
-          "mb-12 relative overflow-hidden px-12 py-12 rounded-lg w-full flex items-center flex-col lg:flex-row gap-6" +
+          "mb-12 relative overflow-hidden p-6 lg:p-12 rounded-lg w-full flex flex-col lg:flex-row gap-6" +
           (reverse ? " flex-row-reverse " : " ") +
           bg
         }
       >
-        <div className="max-w-[300px] lg:max-w-full overflow-hidden border-4 border-white z-[1] drop-shadow-2xl rounded-lg flex-[1] bg-red-300 h-[500px] items-center flex">
+        <div className="w-full overflow-hidden border-4 border-white z-[1] drop-shadow-2xl rounded-lg flex-[1] bg-red-300 h-[500px] items-center flex">
           <motion.img
             style={{ scale }}
             src={image}
@@ -47,13 +47,13 @@ export default function TeamCard({
             className="aspect-square lg:aspect-auto w-full lg:h-full object-cover"
           />
         </div>
-        <div className="relative flex-[1] text-white flex flex-col gap-8 justify-center">
+        <div className="relative flex-[1] text-white flex flex-col gap-3 lg:gap-8 justify-center">
           <Airplane
             className="pointer-none absolute bottom-[-200px] right-[-150px] opacity-70"
             size={900}
             color="#d3d3d3"
           />
-          <div className="flex flex-col gap-8">
+          <div className="flex flex-col sm:flex-row lg:flex-col sm:items-center gap-3 lg:gap-8">
             <div
               style={{
                 textShadow: "0px 3px 10px rgba(0, 0, 0)",
@@ -70,7 +70,7 @@ export default function TeamCard({
             style={{
               textShadow: "0px 2px 10px rgba(0, 0, 0)",
             }}
-            className="z-10 text-base lg:text-2xl space-y-8"
+            className="z-10 text-xl lg:text-2xl space-y-5 lg:space-y-8"
           >
             {attributes.map((attr) => (
               <li key={name} className="flex items-center gap-3">
